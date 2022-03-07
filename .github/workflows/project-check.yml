@@ -4,5 +4,8 @@ jobs:
   lint-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
+      - uses: actions/checkout@v2
+      - name: installation
+        run: make install
+      - name: linting
         run: make lint
