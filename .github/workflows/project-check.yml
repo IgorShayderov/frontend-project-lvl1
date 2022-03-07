@@ -8,4 +8,3 @@ jobs:
       - name: installation
         run: make install
       - name: linting
-        run: make lint
