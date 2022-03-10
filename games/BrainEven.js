@@ -1,12 +1,13 @@
-import readlineSync from 'readline-sync';
-
 import { getRandomNumber } from '../utils/helpers.js';
 
-function BrainEven(userName) {
-  this.userName = userName;
+import AbstractBrainGame from './AbstractBrainGame.js';
+
+export default function BrainEven() {
   this.randomNum = 0;
   this.correctAnswersCount = 0;
 }
+
+BrainEven.prototype = new AbstractBrainGame();
 
 BrainEven.prototype.isNumberEven = function isNumberEven() {
   return this.randomNum % 2 === 0;
@@ -22,7 +23,7 @@ BrainEven.prototype.start = function start() {
 
     console.log(`Question: ${this.randomNum}`);
 
-    const userAnswer = readlineSync.question('Answer: ');
+    const userAnswer = this.askQuestion('Answer: ');
     const isAnswerCorrect = this.checkAnswerCorrectness(userAnswer);
 
     if (isAnswerCorrect) {
@@ -54,11 +55,3 @@ BrainEven.prototype.checkAnswerCorrectness = function checkAnswerCorrectness(use
 
   return false;
 };
-
-export default function BrainEvenSingleton(userName) {
-  if (!BrainEvenSingleton.gameInstance) {
-    BrainEvenSingleton.gameInstance = new BrainEven(userName);
-  }
-
-  return BrainEvenSingleton.gameInstance;
-}
