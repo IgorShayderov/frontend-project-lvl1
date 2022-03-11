@@ -1,64 +1,51 @@
-import readlineSync from 'readline-sync';
-
 import { getRandomNumber } from '../utils/helpers.js';
 
-function BrainEven(userName) {
-  this.userName = userName;
+import AbstractBrainGame from './AbstractBrainGame.js';
+
+export default function BrainEven() {
   this.randomNum = 0;
-  this.correctAnswersCount = 0;
 }
+
+BrainEven.prototype = new AbstractBrainGame();
+Object.defineProperty(BrainEven.prototype, 'constructor', {
+  enumerable: false,
+  value: BrainEven,
+  writable: true,
+});
 
 BrainEven.prototype.isNumberEven = function isNumberEven() {
   return this.randomNum % 2 === 0;
 };
 
 BrainEven.prototype.start = function start() {
-  const necessaryAnswersCount = 3;
-
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  while (this.correctAnswersCount < necessaryAnswersCount) {
+  const loopCallback = () => {
     this.randomNum = getRandomNumber(100);
 
     console.log(`Question: ${this.randomNum}`);
 
-    const userAnswer = readlineSync.question('Answer: ');
-    const isAnswerCorrect = this.checkAnswerCorrectness(userAnswer);
+    this.userAnswer = this.askQuestion('Answer: ');
+
+    const isAnswerCorrect = this.checkAnswerCorrectness(this.userAnswer);
 
     if (isAnswerCorrect) {
       console.log('Correct!');
       this.correctAnswersCount += 1;
     } else {
-      const correctAnswer = this.isNumberEven() ? 'yes' : 'no';
+      this.correctAnswer = this.isNumberEven() ? 'yes' : 'no';
 
-      console.log(`'${userAnswer}' is wrong answer. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${this.userName}!`);
-
-      return;
+      throw new Error('Lost game.');
     }
-  }
+  };
 
-  console.log(`Congratulations, ${this.userName}!`);
+  this.$super.start.call(this, loopCallback);
 };
 
 BrainEven.prototype.checkAnswerCorrectness = function checkAnswerCorrectness(userAnswer) {
   const isNumberEven = this.isNumberEven();
+  const isPositiveCorrectAnswer = isNumberEven && userAnswer === 'yes';
+  const isNegativeCorrectAnswer = !isNumberEven && userAnswer === 'no';
 
-  if (isNumberEven && userAnswer === 'yes') {
-    return true;
-  }
-
-  if (!isNumberEven && userAnswer === 'no') {
-    return true;
-  }
-
-  return false;
+  return isPositiveCorrectAnswer || isNegativeCorrectAnswer;
 };
-
-export default function BrainEvenSingleton(userName) {
-  if (!BrainEvenSingleton.gameInstance) {
-    BrainEvenSingleton.gameInstance = new BrainEven(userName);
-  }
-
-  return BrainEvenSingleton.gameInstance;
-}
