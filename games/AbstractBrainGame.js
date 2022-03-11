@@ -9,10 +9,23 @@ export default function BrainGame() {
   this.correctAnswer = '';
 }
 
-BrainGame.prototype.start = function start(loopCallback) {
+BrainGame.prototype.start = function start(generateQuestion) {
   try {
     while (this.correctAnswersCount < this.necessaryAnswersCount) {
-      loopCallback();
+      const question = generateQuestion();
+
+      console.log(`Question: ${question}`);
+
+      this.userAnswer = this.askQuestion('Answer: ');
+
+      const isAnswerCorrect = this.checkAnswerCorrectness(question);
+
+      if (isAnswerCorrect) {
+        console.log('Correct!');
+        this.correctAnswersCount += 1;
+      } else {
+        throw new Error('Lost game.');
+      }
     }
 
     console.log(`Congratulations, ${this.userName}!`);

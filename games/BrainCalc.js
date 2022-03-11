@@ -17,24 +17,7 @@ Object.defineProperty(BrainCalc.prototype, 'constructor', {
 BrainCalc.prototype.start = function start() {
   console.log('What is the result of the expression?');
 
-  const loopCallback = () => {
-    const mathExpression = this.generateMathExpression();
-
-    console.log(`Question: ${mathExpression}`);
-
-    this.userAnswer = this.askQuestion('Answer: ');
-
-    const isAnswerCorrect = this.checkAnswerCorrectness(mathExpression);
-
-    if (isAnswerCorrect) {
-      console.log('Correct!');
-      this.correctAnswersCount += 1;
-    } else {
-      throw new Error('Lost game.');
-    }
-  };
-
-  this.$super.start.call(this, loopCallback);
+  this.$super.start.call(this, () => this.generateMathExpression());
 };
 
 BrainCalc.prototype.generateMathExpression = function generateMathExpression() {

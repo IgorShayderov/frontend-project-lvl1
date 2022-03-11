@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 import BrainGamesFactory from '../games/BrainGamesFactory.js';
 
-BrainGamesFactory('BrainEven').greet().start();
+const brainGCD = BrainGamesFactory('BrainGCD');
+
+brainGCD.greet().start();
