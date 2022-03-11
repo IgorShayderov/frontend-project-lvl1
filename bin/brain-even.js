@@ -3,4 +3,4 @@ import BrainGamesFactory from '../games/BrainGamesFactory.js';
 
 const brainEvenGame = BrainGamesFactory.createGame('BrainEven');
 
-brainEvenGame().greet().start();
+brainEvenGame.greet().start();
