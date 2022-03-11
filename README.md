@@ -11,3 +11,6 @@ How to start project and play brain-even game:
 
 How to play brain-calc game:
 [![asciicast](https://asciinema.org/a/x2BExjIr9IeHQ7UId8KdTiDoE.svg)](https://asciinema.org/a/x2BExjIr9IeHQ7UId8KdTiDoE)
+
+How to play brain-gcd game:
+[![asciicast](https://asciinema.org/a/zENIFVcW4e8HOFApWo0w2KO7I.svg)](https://asciinema.org/a/zENIFVcW4e8HOFApWo0w2KO7I)
