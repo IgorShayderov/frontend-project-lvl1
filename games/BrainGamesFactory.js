@@ -1,11 +1,13 @@
 import BrainEven from './BrainEven.js';
 import BrainCalc from './BrainCalc.js';
 import BrainGCD from './BrainGCD.js';
+import BrainProgression from './BrainProgression.js';
 
 const availableGames = {
   BrainEven,
   BrainCalc,
   BrainGCD,
+  BrainProgression,
 };
 const createdGames = {};
 

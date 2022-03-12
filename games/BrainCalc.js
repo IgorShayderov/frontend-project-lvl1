@@ -1,5 +1,4 @@
 import AbstractBrainGame from './AbstractBrainGame.js';
-
 import { getRandomNumber } from '../utils/helpers.js';
 
 const availableMathOperations = ['+', '-', '*'];
@@ -17,10 +16,10 @@ Object.defineProperty(BrainCalc.prototype, 'constructor', {
 BrainCalc.prototype.start = function start() {
   console.log('What is the result of the expression?');
 
-  this.$super.start.call(this, () => this.generateMathExpression());
+  this.$super.start.call(this);
 };
 
-BrainCalc.prototype.generateMathExpression = function generateMathExpression() {
+BrainCalc.prototype.generateQuestion = function generateQuestion() {
   const maxNumber = 100;
   const [firstRandomNum, secondRandomNum] = [maxNumber, maxNumber]
     .map((num) => getRandomNumber(num));
@@ -28,12 +27,8 @@ BrainCalc.prototype.generateMathExpression = function generateMathExpression() {
   const mathOperation = availableMathOperations[randomOperationIndex];
   const mathExpression = `${firstRandomNum} ${mathOperation} ${secondRandomNum}`;
 
-  return mathExpression;
-};
-
-BrainCalc.prototype.checkAnswerCorrectness = function checkAnswerCorrectness(mathExpression) {
   // eslint-disable-next-line no-eval
-  this.correctAnswer = eval(mathExpression);
+  this.correctAnswer = `${eval(mathExpression)}`;
 
-  return this.correctAnswer === parseInt(this.userAnswer, 10);
+  return mathExpression;
 };
