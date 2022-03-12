@@ -1,5 +1,4 @@
 import AbstractBrainGame from './AbstractBrainGame.js';
-
 import { getRandomNumber } from '../utils/helpers.js';
 
 export default function BrainGCD() {
@@ -15,17 +14,12 @@ Object.defineProperty(BrainGCD.prototype, 'constructor', {
 BrainGCD.prototype.start = function start() {
   console.log('Find the greatest common divisor of given numbers.');
 
-  this.$super.start.call(this, () => `${getRandomNumber(100)} ${getRandomNumber(100)}`);
+  this.$super.start.call(this);
 };
 
-BrainGCD.prototype.checkAnswerCorrectness = function checkAnswerCorrectness(numbersString) {
-  const numbers = numbersString.match(/\d+/g);
-
-  if (numbers === null) {
-    return false;
-  }
-
-  const [firstNum, secondNum] = numbers;
+BrainGCD.prototype.generateQuestion = function generateQuestion() {
+  const firstNum = getRandomNumber(100);
+  const secondNum = getRandomNumber(100);
   const minimalNumber = Math.min(firstNum, secondNum);
   // eslint-disable-next-line eqeqeq
   const greaterNumber = parseInt(minimalNumber == firstNum ? secondNum : firstNum, 10);
@@ -35,7 +29,7 @@ BrainGCD.prototype.checkAnswerCorrectness = function checkAnswerCorrectness(numb
     potentialDivisor -= 1;
   }
 
-  this.correctAnswer = potentialDivisor;
+  this.correctAnswer = `${potentialDivisor}`;
 
-  return this.correctAnswer === parseInt(this.userAnswer, 10);
+  return `${getRandomNumber(100)} ${getRandomNumber(100)}`;
 };

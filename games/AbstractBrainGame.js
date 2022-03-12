@@ -9,16 +9,16 @@ export default function BrainGame() {
   this.correctAnswer = '';
 }
 
-BrainGame.prototype.start = function start(generateQuestion) {
+BrainGame.prototype.start = function start() {
   try {
     while (this.correctAnswersCount < this.necessaryAnswersCount) {
-      const question = generateQuestion();
+      const question = this.generateQuestion();
 
       console.log(`Question: ${question}`);
 
       this.userAnswer = this.askQuestion('Answer: ');
 
-      const isAnswerCorrect = this.checkAnswerCorrectness(question);
+      const isAnswerCorrect = this.checkAnswerCorrectness();
 
       if (isAnswerCorrect) {
         console.log('Correct!');
@@ -47,4 +47,8 @@ BrainGame.prototype.greet = function greet() {
 
 BrainGame.prototype.askQuestion = function askQuestion(questionText) {
   return readlineSync.question(questionText);
+};
+
+BrainGame.prototype.checkAnswerCorrectness = function checkAnswerCorrectness() {
+  return this.correctAnswer === this.userAnswer;
 };

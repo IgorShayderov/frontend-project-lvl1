@@ -14,3 +14,6 @@ How to play brain-calc game:
 
 How to play brain-gcd game:
 [![asciicast](https://asciinema.org/a/zENIFVcW4e8HOFApWo0w2KO7I.svg)](https://asciinema.org/a/zENIFVcW4e8HOFApWo0w2KO7I)
+
+How to play brain-progression game:
+[![asciicast](https://asciinema.org/a/qeduHzltBLiv2ptWm7FApxSzB.svg)](https://asciinema.org/a/qeduHzltBLiv2ptWm7FApxSzB)
