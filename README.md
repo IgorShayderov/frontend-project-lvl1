@@ -17,3 +17,6 @@ How to play brain-gcd game:
 
 How to play brain-progression game:
 [![asciicast](https://asciinema.org/a/qeduHzltBLiv2ptWm7FApxSzB.svg)](https://asciinema.org/a/qeduHzltBLiv2ptWm7FApxSzB)
+
+How to play brain-prime game:
+[![asciicast](https://asciinema.org/a/bqC8lP1QkX4wki4yG8qbpCCAc.svg)](https://asciinema.org/a/bqC8lP1QkX4wki4yG8qbpCCAc)

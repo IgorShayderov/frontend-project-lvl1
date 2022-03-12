@@ -17,7 +17,7 @@ BrainEven.prototype.start = function start() {
   this.$super.start.call(this);
 };
 
-BrainEven.prototype.generateQuestion = function start() {
+BrainEven.prototype.generateQuestion = function generateQuestion() {
   const randomNumber = getRandomNumber(100);
   const isNumberEven = randomNumber % 2 === 0;
 
