@@ -6,6 +6,11 @@
 
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
+Brain games project is series of small in-console games which claims to test your intellectual skills.
+
+To be able to play this game you should have:
+- node.js version >= v14.12
+
 How to start project and play brain-even game:
 [![asciicast](https://asciinema.org/a/g3T0Q9g6ncHX6rbKCpaYs9kaj.svg)](https://asciinema.org/a/g3T0Q9g6ncHX6rbKCpaYs9kaj)
 
