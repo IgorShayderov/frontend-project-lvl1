@@ -38,7 +38,7 @@ BrainGame.prototype.start = function start() {
 BrainGame.prototype.greet = function greet() {
   console.log('Welcome to the Brain Games!');
 
-  this.userName = this.askQuestion('What is your name?');
+  this.userName = this.askQuestion('May I have your name?');
 
   console.log(`Hello, ${this.userName}!`);
 
