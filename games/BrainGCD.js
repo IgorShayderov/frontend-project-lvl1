@@ -31,5 +31,5 @@ BrainGCD.prototype.generateQuestion = function generateQuestion() {
 
   this.correctAnswer = `${potentialDivisor}`;
 
-  return `${getRandomNumber(100)} ${getRandomNumber(100)}`;
+  return `${firstNum} ${secondNum}`;
 };
