@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import BrainGamesFactory from '../games/BrainGamesFactory.js';
+import brainEvenStart from '../games/brainEven.js';
 
-const brainEvenGame = BrainGamesFactory('BrainEven');
-
-brainEvenGame.greet().start();
+brainEvenStart();

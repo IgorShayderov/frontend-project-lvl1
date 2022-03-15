@@ -1,27 +1,20 @@
-import AbstractBrainGame from './AbstractBrainGame.js';
+import * as common from '../utils/common.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
-export default function BrainEven() {
+function generateQuestion() {
+  return getRandomNumber(100);
 }
 
-BrainEven.prototype = new AbstractBrainGame();
-Object.defineProperty(BrainEven.prototype, 'constructor', {
-  enumerable: false,
-  value: BrainEven,
-  writable: true,
-});
+function generateCorrectAnswer(number) {
+  return number % 2 === 0 ? 'yes' : 'no';
+}
 
-BrainEven.prototype.start = function start() {
+export default function start() {
+  common.greet();
+
+  const userName = common.askForName();
+
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  this.$super.start.call(this);
-};
-
-BrainEven.prototype.generateQuestion = function generateQuestion() {
-  const randomNumber = getRandomNumber(100);
-  const isNumberEven = randomNumber % 2 === 0;
-
-  this.correctAnswer = isNumberEven ? 'yes' : 'no';
-
-  return randomNumber;
-};
+  common.start(userName, generateQuestion, generateCorrectAnswer);
+}

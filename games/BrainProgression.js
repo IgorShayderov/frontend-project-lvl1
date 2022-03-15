@@ -1,25 +1,10 @@
-import AbstractBrainGame from './AbstractBrainGame.js';
+import * as common from '../utils/common.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
 const availableMathOperations = ['+', '-'];
+let hiddenNumber = null;
 
-export default function BrainProgression() {
-}
-
-BrainProgression.prototype = new AbstractBrainGame();
-Object.defineProperty(BrainProgression.prototype, 'constructor', {
-  enumerable: false,
-  value: BrainProgression,
-  writable: true,
-});
-
-BrainProgression.prototype.start = function start() {
-  console.log('What number is missing in the progression?');
-
-  this.$super.start.call(this);
-};
-
-BrainProgression.prototype.generateQuestion = function generateQuestion() {
+function generateQuestion() {
   const minimalNumbersCount = 5;
   const numbersCount = getRandomNumber(5) + minimalNumbersCount;
   const numberToHideIndex = getRandomNumber(numbersCount) - 1;
@@ -35,8 +20,22 @@ BrainProgression.prototype.generateQuestion = function generateQuestion() {
     progressionNumbers.push(nextNumber);
   }
 
-  this.correctAnswer = `${progressionNumbers[numberToHideIndex]}`;
+  hiddenNumber = `${progressionNumbers[numberToHideIndex]}`;
   progressionNumbers.splice(numberToHideIndex, 1, '..');
 
   return progressionNumbers.join(' ');
-};
+}
+
+function generateCorrectAnswer() {
+  return hiddenNumber;
+}
+
+export default function start() {
+  common.greet();
+
+  const userName = common.askForName();
+
+  console.log('What number is missing in the progression?');
+
+  common.start(userName, generateQuestion, generateCorrectAnswer);
+}

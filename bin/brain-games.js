@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import BrainGamesFactory from '../games/BrainGamesFactory.js';
+import * as common from '../utils/common.js';
 
-BrainGamesFactory('BrainEven').greet();
+common.greet();

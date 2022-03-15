@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import BrainGamesFactory from '../games/BrainGamesFactory.js';
+import brainProgressionStart from '../games/brainProgression.js';
 
-const brainProgressionGame = BrainGamesFactory('BrainProgression');
-
-brainProgressionGame.greet().start();
+brainProgressionStart();
