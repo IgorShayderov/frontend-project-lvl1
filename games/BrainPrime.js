@@ -7,7 +7,7 @@ function generateQuestion() {
 
 function generateCorrectAnswer(allegedlyPrimeNumber) {
   const isNumberPrime = (function isNumberPrime(number) {
-    if (number < 1) {
+    if (number <= 1) {
       return false;
     }
 
