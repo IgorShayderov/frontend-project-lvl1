@@ -1,34 +1,33 @@
 import * as common from '../utils/common.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
-function generateQuestion() {
-  return getRandomNumber(100);
-}
+function isNumberPrime(number) {
+  if (number <= 1) {
+    return false;
+  }
 
-function generateCorrectAnswer(allegedlyPrimeNumber) {
-  const isNumberPrime = (function isNumberPrime(number) {
-    if (number <= 1) {
+  for (let divisor = number - 1; divisor > 1; divisor -= 1) {
+    if (number % divisor === 0) {
       return false;
     }
+  }
 
-    for (let divisor = number - 1; divisor > 1; divisor -= 1) {
-      if (number % divisor === 0) {
-        return false;
-      }
-    }
+  return true;
+}
 
-    return true;
-  }(allegedlyPrimeNumber));
+function generateQuestion() {
+  const randomNumber = getRandomNumber(100);
 
-  return isNumberPrime ? 'yes' : 'no';
+  return {
+    question: randomNumber,
+    answer: isNumberPrime(randomNumber) ? 'yes' : 'no',
+  };
 }
 
 export default function start() {
-  common.greet();
-
   const userName = common.askForName();
 
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-  common.start(userName, generateQuestion, generateCorrectAnswer);
+  common.start(userName, generateQuestion);
 }

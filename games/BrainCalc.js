@@ -1,5 +1,7 @@
 import * as common from '../utils/common.js';
-import { getRandomNumber } from '../utils/helpers.js';
+import {
+  getRandomNumber, calcOperationResult,
+} from '../utils/helpers.js';
 
 const availableMathOperations = ['+', '-', '*'];
 
@@ -11,20 +13,20 @@ function generateQuestion() {
   const mathOperation = availableMathOperations[randomOperationIndex];
   const mathExpression = `${firstRandomNum} ${mathOperation} ${secondRandomNum}`;
 
-  return mathExpression;
-}
-
-function generateCorrectAnswer(mathExpression) {
-  // eslint-disable-next-line no-eval
-  return `${eval(mathExpression)}`;
+  return {
+    question: mathExpression,
+    answer: `${calcOperationResult(
+      firstRandomNum,
+      secondRandomNum,
+      mathOperation,
+    )}`,
+  };
 }
 
 export default function start() {
-  common.greet();
-
   const userName = common.askForName();
 
   console.log('What is the result of the expression?');
 
-  common.start(userName, generateQuestion, generateCorrectAnswer);
+  common.start(userName, generateQuestion);
 }
