@@ -20,29 +20,27 @@ export function start(userName, generateQuestion) {
   let userAnswer = '';
   let correctAnswer = '';
 
-  try {
-    while (correctAnswersCount < necessaryAnswersCount) {
-      const { question, answer } = generateQuestion();
+  while (correctAnswersCount < necessaryAnswersCount) {
+    const { question, answer } = generateQuestion();
 
-      correctAnswer = answer;
+    correctAnswer = answer;
 
-      console.log(`Question: ${question}`);
+    console.log(`Question: ${question}`);
 
-      userAnswer = askQuestion('Answer: ');
+    userAnswer = askQuestion('Answer: ');
 
-      const isAnswerCorrect = userAnswer === correctAnswer;
+    const isAnswerCorrect = userAnswer === correctAnswer;
 
-      if (isAnswerCorrect) {
-        console.log('Correct!');
-        correctAnswersCount += 1;
-      } else {
-        throw new Error('Lost game.');
-      }
+    if (isAnswerCorrect) {
+      console.log('Correct!');
+      correctAnswersCount += 1;
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+
+      return;
     }
-
-    console.log(`Congratulations, ${userName}!`);
-  } catch (error) {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    console.log(`Let's try again, ${userName}!`);
   }
+
+  console.log(`Congratulations, ${userName}!`);
 }
