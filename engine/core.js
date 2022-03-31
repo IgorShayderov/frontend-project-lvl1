@@ -6,8 +6,7 @@ function askQuestion(questionText) {
   return readlineSync.question(questionText);
 }
 
-export function askForName() {
-  console.log('Welcome to the Brain Games!');
+export function getUserName() {
   const userName = askQuestion('May I have your name?');
 
   console.log(`Hello, ${userName}!`);
@@ -15,19 +14,23 @@ export function askForName() {
   return userName;
 }
 
-export function start(userName, generateQuestion) {
+export function start(greetMessage, generateQuestionAnswerPair) {
   let correctAnswersCount = 0;
   let userAnswer = '';
   let correctAnswer = '';
 
+  console.log('Welcome to the Brain Games!');
+
+  const userName = getUserName();
+
+  console.log(greetMessage);
+
   while (correctAnswersCount < necessaryAnswersCount) {
-    const { question, answer } = generateQuestion();
+    const { question, answer } = generateQuestionAnswerPair();
 
     correctAnswer = answer;
 
-    console.log(`Question: ${question}`);
-
-    userAnswer = askQuestion('Answer: ');
+    userAnswer = askQuestion(`Question: ${question}.\nAnswer: `);
 
     const isAnswerCorrect = userAnswer === correctAnswer;
 

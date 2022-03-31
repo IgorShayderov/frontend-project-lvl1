@@ -1,11 +1,11 @@
-import * as common from '../utils/common.js';
+import * as core from '../engine/core.js';
 import {
   getRandomNumber, calcOperationResult,
 } from '../utils/helpers.js';
 
 const availableMathOperations = ['+', '-', '*'];
 
-function generateQuestion() {
+function generateQuestionAnswerPair() {
   const maxNumber = 100;
   const [firstRandomNum, secondRandomNum] = [maxNumber, maxNumber]
     .map((num) => getRandomNumber(num));
@@ -24,9 +24,7 @@ function generateQuestion() {
 }
 
 export default function start() {
-  const userName = common.askForName();
+  const greetMessage = 'What is the result of the expression?';
 
-  console.log('What is the result of the expression?');
-
-  common.start(userName, generateQuestion);
+  core.start(greetMessage, generateQuestionAnswerPair);
 }

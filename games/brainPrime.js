@@ -1,4 +1,4 @@
-import * as common from '../utils/common.js';
+import * as core from '../engine/core.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
 function isNumberPrime(number) {
@@ -6,7 +6,7 @@ function isNumberPrime(number) {
     return false;
   }
 
-  for (let divisor = number - 1; divisor > 1; divisor -= 1) {
+  for (let divisor = 2; divisor < number; divisor += 1) {
     if (number % divisor === 0) {
       return false;
     }
@@ -15,7 +15,7 @@ function isNumberPrime(number) {
   return true;
 }
 
-function generateQuestion() {
+function generateQuestionAnswerPair() {
   const randomNumber = getRandomNumber(100);
 
   return {
@@ -25,9 +25,7 @@ function generateQuestion() {
 }
 
 export default function start() {
-  const userName = common.askForName();
+  const greetMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-  common.start(userName, generateQuestion);
+  core.start(greetMessage, generateQuestionAnswerPair);
 }
