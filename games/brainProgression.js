@@ -1,13 +1,13 @@
-import * as common from '../utils/common.js';
+import * as core from '../engine/core.js';
 import { getRandomNumber, calcOperationResult } from '../utils/helpers.js';
 
 const availableMathOperations = ['+', '-'];
 
-function generateQuestion() {
-  const minimalNumbersCount = 5;
-  const numbersCount = getRandomNumber(5) + minimalNumbersCount;
-  const numberToHideIndex = getRandomNumber(numbersCount) - 1;
-  const arithmeticOperation = availableMathOperations[getRandomNumber(2) - 1];
+function createProgression(numbersCount) {
+  const highestMathOperationIndex = availableMathOperations.length - 1;
+  const arithmeticOperation = availableMathOperations[
+    getRandomNumber(highestMathOperationIndex, 0)
+  ];
   const consequentDifference = getRandomNumber(10);
   const progressionNumbers = [getRandomNumber(100)];
 
@@ -22,19 +22,26 @@ function generateQuestion() {
     progressionNumbers.push(nextNumber);
   }
 
-  const hiddenNumber = `${progressionNumbers[numberToHideIndex]}`;
-  progressionNumbers.splice(numberToHideIndex, 1, '..');
+  return progressionNumbers;
+}
+
+function generateQuestionAnswerPair() {
+  const minimalNumbersCount = 5;
+  const numbersCount = getRandomNumber(5) + minimalNumbersCount;
+  const numberToHideIndex = getRandomNumber(numbersCount - 1, 0);
+  const progression = createProgression(numbersCount);
+
+  const hiddenNumber = `${progression[numberToHideIndex]}`;
+  progression.splice(numberToHideIndex, 1, '..');
 
   return {
-    question: progressionNumbers.join(' '),
+    question: progression.join(' '),
     answer: hiddenNumber,
   };
 }
 
 export default function start() {
-  const userName = common.askForName();
+  const greetMessage = 'What number is missing in the progression?';
 
-  console.log('What number is missing in the progression?');
-
-  common.start(userName, generateQuestion);
+  core.start(greetMessage, generateQuestionAnswerPair);
 }

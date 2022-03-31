@@ -1,32 +1,30 @@
-import * as common from '../utils/common.js';
+import * as core from '../engine/core.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
 function calcGCD(firstNum, secondNum) {
   const minimalNumber = Math.min(firstNum, secondNum);
   const greaterNumber = minimalNumber === firstNum ? secondNum : firstNum;
-  let potentialDivisor = minimalNumber;
+  let GCD = minimalNumber;
 
-  while (greaterNumber % potentialDivisor > 0 || minimalNumber % potentialDivisor > 0) {
-    potentialDivisor -= 1;
+  while (greaterNumber % GCD > 0 || minimalNumber % GCD > 0) {
+    GCD -= 1;
   }
 
-  return potentialDivisor;
+  return GCD;
 }
 
-function generateQuestion() {
+function generateQuestionAnswerPair() {
   const firstNum = getRandomNumber(100);
   const secondNum = getRandomNumber(100);
 
   return {
     question: `${firstNum} ${secondNum}`,
-    answer: `${calcGCD(firstNum, +secondNum)}`,
+    answer: `${calcGCD(firstNum, secondNum)}`,
   };
 }
 
 export default function start() {
-  const userName = common.askForName();
+  const greetMessage = 'Find the greatest core divisor of given numbers.';
 
-  console.log('Find the greatest common divisor of given numbers.');
-
-  common.start(userName, generateQuestion);
+  core.start(greetMessage, generateQuestionAnswerPair);
 }

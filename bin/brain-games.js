@@ -1,4 +1,8 @@
 #!/usr/bin/env node
-import * as common from '../utils/common.js';
+import * as common from '../engine/core.js';
 
-common.askForName();
+console.log('Welcome to the Brain Games!');
+
+const userName = common.getUserName();
+
+console.log(`Hello, ${userName}!`);

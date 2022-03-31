@@ -1,7 +1,7 @@
-import * as common from '../utils/common.js';
+import * as core from '../engine/core.js';
 import { getRandomNumber } from '../utils/helpers.js';
 
-function generateQuestion() {
+function generateQuestionAnswerPair() {
   const randomNum = getRandomNumber(100);
 
   return {
@@ -11,9 +11,7 @@ function generateQuestion() {
 }
 
 export default function start() {
-  const userName = common.askForName();
+  const greetMessage = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-  common.start(userName, generateQuestion);
+  core.start(greetMessage, generateQuestionAnswerPair);
 }
