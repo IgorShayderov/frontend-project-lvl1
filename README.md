@@ -4,7 +4,7 @@
 
 [![Actions Status](https://github.com/IgorShayderov/frontend-project-lvl1/workflows/project-check/badge.svg)](https://github.com/IgorShayderov/frontend-project-lvl1/actions)
 
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
+<a href="https://codeclimate.com/github/IgorShayderov/frontend-project-lvl1"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
 Brain games project is series of small in-console games which claims to test your intellectual skills.
 
