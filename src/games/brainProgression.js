@@ -1,5 +1,5 @@
-import * as core from '../engine/core.js';
-import { getRandomNumber, calcOperationResult } from '../utils/helpers.js';
+import * as core from '../core.js';
+import { getRandomNumber, calcOperationResult } from '../helpers.js';
 
 const availableMathOperations = ['+', '-'];
 

@@ -14,8 +14,6 @@ export function getUserName() {
 
 export function start(greetMessage, generateQuestionAnswerPair) {
   let correctAnswersCount = 0;
-  let userAnswer = '';
-  let correctAnswer = '';
 
   console.log('Welcome to the Brain Games!');
 
@@ -25,12 +23,8 @@ export function start(greetMessage, generateQuestionAnswerPair) {
   console.log(greetMessage);
 
   while (correctAnswersCount < necessaryAnswersCount) {
-    const { question, answer } = generateQuestionAnswerPair();
-
-    correctAnswer = answer;
-
-    userAnswer = askQuestion(`Question: ${question}.\nAnswer: `);
-
+    const { question, answer: correctAnswer } = generateQuestionAnswerPair();
+    const userAnswer = askQuestion(`Question: ${question}.\nAnswer: `);
     const isAnswerCorrect = userAnswer === correctAnswer;
 
     if (isAnswerCorrect) {

@@ -1,16 +1,16 @@
-import * as core from '../engine/core.js';
-import { getRandomNumber } from '../utils/helpers.js';
+import * as core from '../core.js';
+import { getRandomNumber } from '../helpers.js';
 
 function calcGCD(firstNum, secondNum) {
   const minimalNumber = Math.min(firstNum, secondNum);
   const greaterNumber = minimalNumber === firstNum ? secondNum : firstNum;
-  let GCD = minimalNumber;
+  let gcd = minimalNumber;
 
-  while (greaterNumber % GCD > 0 || minimalNumber % GCD > 0) {
-    GCD -= 1;
+  while (greaterNumber % gcd > 0 || minimalNumber % gcd > 0) {
+    gcd -= 1;
   }
 
-  return GCD;
+  return gcd;
 }
 
 function generateQuestionAnswerPair() {

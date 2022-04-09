@@ -1,5 +1,5 @@
-import * as core from '../engine/core.js';
-import { getRandomNumber } from '../utils/helpers.js';
+import * as core from '../core.js';
+import { getRandomNumber } from '../helpers.js';
 
 function isNumberPrime(number) {
   if (number <= 1) {

@@ -1,7 +1,7 @@
-import * as core from '../engine/core.js';
+import * as core from '../core.js';
 import {
   getRandomNumber, calcOperationResult,
-} from '../utils/helpers.js';
+} from '../helpers.js';
 
 const availableMathOperations = ['+', '-', '*'];
 
