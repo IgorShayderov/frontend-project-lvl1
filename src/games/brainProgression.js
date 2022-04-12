@@ -1,13 +1,7 @@
 import * as core from '../core.js';
 import { getRandomNumber, calcOperationResult } from '../helpers.js';
 
-const availableMathOperations = ['+', '-'];
-
 function createProgression(numbersCount) {
-  const highestMathOperationIndex = availableMathOperations.length - 1;
-  const arithmeticOperation = availableMathOperations[
-    getRandomNumber(highestMathOperationIndex, 0)
-  ];
   const consequentDifference = getRandomNumber(10);
   const progressionNumbers = [getRandomNumber(100)];
 
@@ -16,7 +10,7 @@ function createProgression(numbersCount) {
     const nextNumber = calcOperationResult(
       lastNumber,
       consequentDifference,
-      arithmeticOperation,
+      '+',
     );
 
     progressionNumbers.push(nextNumber);
@@ -28,11 +22,11 @@ function createProgression(numbersCount) {
 function generateQuestionAnswerPair() {
   const minimalNumbersCount = 5;
   const numbersCount = getRandomNumber(5) + minimalNumbersCount;
-  const numberToHideIndex = getRandomNumber(numbersCount - 1, 0);
+  const hiddenNumberIndex = getRandomNumber(numbersCount - 1, 0);
   const progression = createProgression(numbersCount);
 
-  const hiddenNumber = `${progression[numberToHideIndex]}`;
-  progression.splice(numberToHideIndex, 1, '..');
+  const hiddenNumber = `${progression[hiddenNumberIndex]}`;
+  progression.splice(hiddenNumberIndex, 1, '..');
 
   return {
     question: progression.join(' '),
