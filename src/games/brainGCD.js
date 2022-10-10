@@ -24,7 +24,7 @@ function generateQuestionAnswerPair() {
 }
 
 export default function start() {
-  const greetMessage = 'Find the greatest core divisor of given numbers.';
+  const greetMessage = 'Find the greatest common divisor of given numbers.';
 
   core.start(greetMessage, generateQuestionAnswerPair);
 }
