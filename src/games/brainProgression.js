@@ -1,4 +1,4 @@
-import * as core from '../core.js';
+import start from '../core.js';
 import { getRandomNumber, calcOperationResult } from '../helpers.js';
 
 function createProgression(numbersCount) {
@@ -19,7 +19,7 @@ function createProgression(numbersCount) {
   return progressionNumbers;
 }
 
-function generateQuestionAnswerPair() {
+const generateQuestionAnswerPair = () => {
   const minimalNumbersCount = 5;
   const numbersCount = getRandomNumber(5) + minimalNumbersCount;
   const hiddenNumberIndex = getRandomNumber(numbersCount - 1, 0);
@@ -32,10 +32,10 @@ function generateQuestionAnswerPair() {
     question: progression.join(' '),
     answer: hiddenNumber,
   };
-}
+};
 
-export default function start() {
+export default () => {
   const greetMessage = 'What number is missing in the progression?';
 
-  core.start(greetMessage, generateQuestionAnswerPair);
-}
+  start(greetMessage, generateQuestionAnswerPair);
+};

@@ -1,7 +1,7 @@
-import * as core from '../core.js';
+import start from '../core.js';
 import { getRandomNumber } from '../helpers.js';
 
-function isNumberPrime(number) {
+const isNumberPrime = (number) => {
   if (number <= 1) {
     return false;
   }
@@ -13,19 +13,19 @@ function isNumberPrime(number) {
   }
 
   return true;
-}
+};
 
-function generateQuestionAnswerPair() {
+const generateQuestionAnswerPair = () => {
   const randomNumber = getRandomNumber(100);
 
   return {
     question: randomNumber,
     answer: isNumberPrime(randomNumber) ? 'yes' : 'no',
   };
-}
+};
 
-export default function start() {
+export default () => {
   const greetMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  core.start(greetMessage, generateQuestionAnswerPair);
-}
+  start(greetMessage, generateQuestionAnswerPair);
+};

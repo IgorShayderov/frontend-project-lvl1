@@ -1,7 +1,7 @@
-import * as core from '../core.js';
+import start from '../core.js';
 import { getRandomNumber } from '../helpers.js';
 
-function calcGCD(firstNum, secondNum) {
+const calcGCD = (firstNum, secondNum) => {
   const minimalNumber = Math.min(firstNum, secondNum);
   const greaterNumber = minimalNumber === firstNum ? secondNum : firstNum;
   let gcd = minimalNumber;
@@ -11,7 +11,7 @@ function calcGCD(firstNum, secondNum) {
   }
 
   return gcd;
-}
+};
 
 function generateQuestionAnswerPair() {
   const firstNum = getRandomNumber(100);
@@ -23,8 +23,8 @@ function generateQuestionAnswerPair() {
   };
 }
 
-export default function start() {
+export default () => {
   const greetMessage = 'Find the greatest common divisor of given numbers.';
 
-  core.start(greetMessage, generateQuestionAnswerPair);
-}
+  start(greetMessage, generateQuestionAnswerPair);
+};

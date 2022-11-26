@@ -2,29 +2,18 @@ import readlineSync from 'readline-sync';
 
 const necessaryAnswersCount = 3;
 
-function askQuestion(questionText) {
-  return readlineSync.question(questionText);
-}
-
-export function getUserName() {
-  const userName = askQuestion('May I have your name?');
-
-  return userName;
-}
-
-export function start(greetMessage, generateQuestionAnswerPair) {
+export default (greetMessage, generateQuestionAnswerPair) => {
   let correctAnswersCount = 0;
 
   console.log('Welcome to the Brain Games!');
 
-  const userName = getUserName();
-
+  const userName = readlineSync.question('May I have your name?');
   console.log(`Hello, ${userName}!`);
   console.log(greetMessage);
 
   while (correctAnswersCount < necessaryAnswersCount) {
     const { question, answer: correctAnswer } = generateQuestionAnswerPair();
-    const userAnswer = askQuestion(`Question: ${question}.\nAnswer: `);
+    const userAnswer = readlineSync.question(`Question: ${question}.\nAnswer: `);
     const isAnswerCorrect = userAnswer === correctAnswer;
 
     if (isAnswerCorrect) {
@@ -39,4 +28,4 @@ export function start(greetMessage, generateQuestionAnswerPair) {
   }
 
   console.log(`Congratulations, ${userName}!`);
-}
+};

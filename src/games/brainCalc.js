@@ -1,11 +1,11 @@
-import * as core from '../core.js';
+import start from '../core.js';
 import {
   getRandomNumber, calcOperationResult,
 } from '../helpers.js';
 
 const availableMathOperations = ['+', '-', '*'];
 
-function generateQuestionAnswerPair() {
+const generateQuestionAnswerPair = () => {
   const maxNumber = 100;
   const [firstRandomNum, secondRandomNum] = [maxNumber, maxNumber]
     .map((num) => getRandomNumber(num));
@@ -21,10 +21,10 @@ function generateQuestionAnswerPair() {
       mathOperation,
     )}`,
   };
-}
+};
 
-export default function start() {
+export default () => {
   const greetMessage = 'What is the result of the expression?';
 
-  core.start(greetMessage, generateQuestionAnswerPair);
-}
+  start(greetMessage, generateQuestionAnswerPair);
+};
